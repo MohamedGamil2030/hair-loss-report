@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HAIR LOSS REPORT</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #34495e;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            background: #3498db;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #2980b9;
+        }
+
+        #result {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background: #f8f9fa;
+            display: none;
+        }
+
+        .result-point {
+            margin: 15px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .result-point h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .result-point p {
+            color: #34495e;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HAIR LOSS REPORT</h1>
+        <form id="hairLossForm">
+            <div class="form-group">
+                <label>العمر:</label>
+                <input type="number" id="age" required>
+            </div>
+            <div class="form-group">
+                <label>النوع:</label>
+                <select id="gender" required>
+                    <option value="">اختر النوع</option>
+                    <option value="male">ذكر</option>
+                    <option value="female">أنثى</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>نوع التساقط:</label>
+                <select id="hairLossType" required>
+                    <option value="">اختر نوع التساقط</option>
+                    <option value="heavy">تساقط غزير</option>
+                    <option value="patches">فراغات</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>مدة الأعراض (بالأشهر):</label>
+                <input type="number" id="duration" required>
+            </div>
+            <div class="form-group">
+                <label>هل يوجد تاريخ عائلي للتساقط/الصلع؟</label>
+                <select id="familyHistory" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>هل تعاني من أمراض مزمنة؟</label>
+                <select id="chronicDiseases" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>هل أجريت عمليات جراحية مؤخراً؟</label>
+                <select id="surgery" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>هل تتناول أدوية بشكل منتظم؟</label>
+                <select id="medications" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>هل تعاني من مشاكل نفسية مزمنة؟</label>
+                <select id="mentalHealth" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>هل تعاني من القشرة/الصدفية؟</label>
+                <select id="dandruff" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>هل قمت بفرد الشعر/الصبغة مؤخراً؟</label>
+                <select id="hairTreatment" required>
+                    <option value="">اختر</option>
+                    <option value="yes">نعم</option>
+                    <option value="no">لا</option>
+                </select>
+            </div>
+            <button type="submit">تحليل الحالة</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        document.getElementById('hairLossForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = {
+                age: parseInt(document.getElementById('age').value),
+                gender: document.getElementById('gender').value,
+                hairLossType: document.getElementById('hairLossType').value,
+                duration: parseInt(document.getElementById('duration').value),
+                familyHistory: document.getElementById('familyHistory').value === 'yes',
+                chronicDiseases: document.getElementById('chronicDiseases').value === 'yes',
+                surgery: document.getElementById('surgery').value === 'yes',
+                medications: document.getElementById('medications').value === 'yes',
+                mentalHealth: document.getElementById('mentalHealth').value === 'yes',
+                dandruff: document.getElementById('dandruff').value === 'yes',
+                hairTreatment: document.getElementById('hairTreatment').value === 'yes'
+            };
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            let analysis = [];
+
+            // Age-based analysis
+            if (formData.age < 30) {
+                analysis.push({
+                    title: '📊 تحليل العمر',
+                    content: 'أنت في الفئة العمرية الأقل من 30 سنة. في هذه المرحلة، غالباً ما يكون تساقط الشعر مرتبطاً بعوامل يمكن علاجها.'
+                });
+            } else if (formData.age <= 50) {
+                analysis.push({
+                    title: '📊 تحليل العمر',
+                    content: 'أنت في الفئة العمرية المتوسطة. قد يكون التساقط مرتبطاً بالتغيرات الهرمونية والإجهاد.'
+                });
+            } else {
+                analysis.push({
+                    title: '📊 تحليل العمر',
+                    content: 'في هذه المرحلة العمرية، قد يكون تساقط الشعر مرتبطاً بالتغيرات الطبيعية المرتبطة بالتقدم في العمر.'
+                });
+            }
+
+            // Gender-specific analysis
+            if (formData.gender === 'male') {
+                analysis.push({
+                    title: '👤 تحليل حسب النوع',
+                    content: 'كرجل، قد يكون التساقط مرتبطاً بالصلع الوراثي الذكوري. يُنصح باستشارة طبيب الجلدية للنظر في خيارات العلاج المناسبة.'
+                });
+            } else {
+                analysis.push({
+                    title: '👤 تحليل حسب النوع',
+                    content: 'كسيدة، قد يكون التساقط مرتبطاً بالتغيرات الهرمونية أو نقص التغذية. يُنصح بإجراء فحوصات شاملة.'
+                });
+            }
+
+            // Duration analysis
+            if (formData.duration <= 6) {
+                analysis.push({
+                    title: '⏱️ تحليل المدة',
+                    content: 'التساقط حديث نسبياً. هذا قد يشير إلى حالة مؤقتة يمكن علاجها.'
+                });
+            } else {
+                analysis.push({
+                    title: '⏱️ تحليل المدة',
+                    content: 'التساقط مستمر لفترة طويلة. يجب استشارة طبيب متخصص لوضع خطة علاج مناسبة.'
+                });
+            }
+
+            // Compile recommendations
+            let recommendations = ['✅ تناول غذاء متوازن غني بالبروتين والفيتامينات'];
+            
+            if (formData.mentalHealth) {
+                recommendations.push('✅ ننصح بالتعامل مع الضغوط النفسية من خلال استشارة متخصص');
+            }
+            
+            if (formData.dandruff) {
+                recommendations.push('✅ استخدام شامبو طبي مضاد للقشرة');
+            }
+            
+            if (formData.hairTreatment) {
+                recommendations.push('✅ تجنب المعالجات الكيميائية للشعر لفترة');
+            }
+
+            analysis.push({
+                title: '💡 التوصيات',
+                content: recommendations.join('\n')
+            });
+
+            // Display results
+            resultDiv.innerHTML = analysis.map(item => `
+                <div class="result-point">
+                    <h3>${item.title}</h3>
+                    <p>${item.content}</p>
+                </div>
+            `).join('');
+        });
+    </script>
+</body>
+</html>
